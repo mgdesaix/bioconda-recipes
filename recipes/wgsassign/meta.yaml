@@ -1,0 +1,38 @@
+{% set name = "WGSassign" %}
+{% set version = "1.0" %}
+{% set sha256 = "aa30fd395ec7985ae65d751ce86ba889a627957e2a7f5ceddbb6b1950c922d02" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: https://github.com/mgdesaix/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  number: 1
+  skip: True  # [not py2k]
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+  host:
+    - python>=3.6
+    - numpy<=1.22.3
+    - scipy
+    - cython
+  run:
+    - python
+    - numpy
+    - scipy
+
+test:
+  commands:
+    - structure.py | grep "options"
+
+about:
+  home: https://github.com/mgdesaix/WGSassign
+  license: GPLv3
+  license_file: LICENSE
+  summary: "Population assignment from genotype likelihoods for low-coverage whole-genome sequencing data."
