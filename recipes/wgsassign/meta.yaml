@@ -11,15 +11,15 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   skip: True  # [not py2k]
 
 requirements:
   build:
     - {{ compiler('c') }}
   host:
-    - python>=3.6
-    - numpy<=1.22.3
+    - python >=3.6
+    - numpy <=1.22.3
     - scipy
     - cython
   run:
@@ -29,7 +29,7 @@ requirements:
 
 test:
   commands:
-    - structure.py | grep "options"
+    - WGSassign | grep "options"
 
 about:
   home: https://github.com/mgdesaix/WGSassign
