@@ -7,4 +7,4 @@ python setup.py build_ext
 
 # copy scripts
 chmod +x ./WGSassign/WGSassign.py
-cp ./WGSassign/WGSassign.py ${PREFIX}/bin
+cp ./WGSassign/*.py ${PREFIX}/bin
